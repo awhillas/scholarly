@@ -1,4 +1,6 @@
-# scribble
+# Scribble
+
+vue.js frontend
 
 ## Project setup
 ```

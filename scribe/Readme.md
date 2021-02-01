@@ -1,4 +1,4 @@
-# scholarly
+# Scribe
 
 ## Setup
 
