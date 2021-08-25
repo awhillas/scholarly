@@ -8,10 +8,26 @@ from pprint import pprint as pp
 import requests
 from bs4 import BeautifulSoup
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
 from loguru import logger
 
 app = FastAPI()
+
+# CORS
+
+origins = [
+    "http://localhost",
+    "http://localhost:8080",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # See: https://github.com/Delgan/loguru
 logger.add(sys.stderr, format="{time} {level} {message}", filter="my_module", level="INFO")
@@ -90,6 +106,7 @@ async def home():
 async def search(q, y: int = None):
     return {'results': query(q, y)}
 
+# For testing...
 
 def main(search: str, year: str = None):
     logger.debug("Searching for: '{}'!", search)
