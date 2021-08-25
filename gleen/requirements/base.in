@@ -1,0 +1,6 @@
+loguru
+bs4
+requests
+lxml
+fastapi[all]
+uvicorn[standard]
