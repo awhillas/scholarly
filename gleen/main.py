@@ -4,6 +4,7 @@ import re
 import string
 import sys
 from pprint import pprint as pp
+from functools import lru_cache
 
 import requests
 from bs4 import BeautifulSoup
@@ -34,6 +35,7 @@ logger.add(sys.stderr, format="{time} {level} {message}", filter="my_module", le
 
 BASE_URL = 'https://scholar.google.com/scholar'
 
+@lru_cache
 def scrape_page(url):
     logger.info("Hitting: {}", url)
     headers = {'User-Agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/601.3.9 (KHTML, like Gecko) Version/9.0.2 Safari/601.3.9'}
