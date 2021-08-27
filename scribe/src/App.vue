@@ -1,14 +1,19 @@
 <template>
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="root">
+    <SearchForm />
+    <PapersGraph />
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import SearchForm from './components/SearchForm.vue'
+import PapersGraph from './components/PapersGraph.vue'
 
 export default {
-  name: 'App',
+  name: 'Scholarly',
   components: {
-    HelloWorld
+    SearchForm,
+    PapersGraph
   }
 }
 </script>
