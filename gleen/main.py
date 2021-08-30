@@ -19,7 +19,7 @@ app = FastAPI()
 
 origins = [
     "http://localhost",
-    "http://localhost:8080",
+    "http://localhost:3000",
 ]
 
 app.add_middleware(
@@ -41,7 +41,7 @@ def scrape_page(url):
     headers = {'User-Agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/601.3.9 (KHTML, like Gecko) Version/9.0.2 Safari/601.3.9'}
     response=requests.get(url, headers=headers)
     soup=BeautifulSoup(response.content,'lxml')
-    results = {}
+    results = []
     for item in soup.select('[data-lid]'):
         try:
             gid = item['data-cid']
@@ -61,19 +61,19 @@ def scrape_page(url):
                 'title': item.select('h3')[0].get_text(),
                 'year': year,
                 'paper_link': item.select('a')[0]['href'],
-                'descripion': item.select('.gs_rs')[0].get_text(),
+                'description': item.select('.gs_rs')[0].get_text(),
                 'citations': citations,
                 'cited_by_link': cited_by_link,
                 'related_link': related_link
             }
 
             if gid not in results:
-               results[gid] = r
+               results += [r]
 
         except Exception as e:
             #raise e
             print(e)
-    logger.info("Found {} restuls", len(results))
+    logger.info("Found {} results", len(results))
     return results
 
 def query(text, min_year=None):
