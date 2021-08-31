@@ -1,7 +1,7 @@
 // import logo from './logo.svg';
 // import './App.css';
 import SearchForm from './SearchForm.js'
-import PapersGraph from './PapersGraph.js'
+import PapersSummary from './PapersGraph.js'
 import React from 'react';
 
 class App extends React.Component {
@@ -56,7 +56,7 @@ class App extends React.Component {
             <SearchForm handleSearch={this.handleSeach} />
           </header>
           
-          <PapersGraph papers={papers} />
+          <PapersSummary papers={papers} />
           
         </div>
       );

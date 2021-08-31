@@ -1,8 +1,10 @@
 <template>
     <svg :width="width" :height="height">
             <line v-for="(year, i) in axis" 
-                :x1="(i+1) * width / axis.length" y1="0" 
-                :x2="(i+1) * width / axis.length" :y2="height" 
+                :x1="(i+1) * width / axis.length" 
+                y1="0" 
+                :x2="(i+1) * width / axis.length" 
+                :y2="height" 
                 class="yearMarker" :key="year" />
             <text v-for="(year, i) in axis" 
                 :x="(i+1) * width / axis.length" 

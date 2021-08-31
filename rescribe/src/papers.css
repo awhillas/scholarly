@@ -1,0 +1,7 @@
+svg {
+    border: 1px dashed black;
+}
+.yearMarker {
+    stroke:rgb(0,0,125);
+    stroke-width: 1;
+}
